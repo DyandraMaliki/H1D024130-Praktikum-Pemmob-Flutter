@@ -1,4 +1,4 @@
-import 'package:belajar_flutter/ui/produk_page.dart';
+import 'package:belajar_flutter/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,13 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Aplikasi Flutter Pertama",
-      theme: ThemeData(
-        useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
-      home: const ProdukPage(),
+    return const MaterialApp(
+      title: 'Flutter Menu',
+      home: LoginPage(),
     );
   }
 }

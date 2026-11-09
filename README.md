@@ -6,3 +6,10 @@
 
 ### Display
 ![Tampilan Aplikasi](./images/gambar1.png)
+
+### Display 
+<p align="center">
+  <img src="images/gambar2.jpeg" width="200">
+  <img src="images/gambar22.jpeg" width="200">
+  <img src="images/gambar23.jpeg" width="200">
+</p>
