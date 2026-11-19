@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tokokita/bloc/produk_bloc.dart';
 import 'package:tokokita/model/produk.dart';
 import 'package:tokokita/ui/produk_form.dart';
+import 'package:tokokita/ui/produk_page.dart';
+import 'package:tokokita/widget/warning_dialog.dart';
 
 class ProdukDetail extends StatefulWidget {
   final Produk? produk;
@@ -54,9 +57,7 @@ class _ProdukDetailState extends State<ProdukDetail> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProdukForm(
-                  produk: widget.produk!,
-                ),
+                builder: (context) => ProdukForm(produk: widget.produk!),
               ),
             );
           },
@@ -79,7 +80,23 @@ class _ProdukDetailState extends State<ProdukDetail> {
       actions: [
         OutlinedButton(
           child: const Text("Ya"),
-          onPressed: () {},
+          onPressed: () {
+            ProdukBloc.deleteProduk(id: widget.produk!.id!).then((value) {
+              if (!mounted) return;
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                    builder: (BuildContext context) => const ProdukPage()),
+              );
+            }, onError: (error) {
+              if (!mounted) return;
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => const WarningDialog(
+                  description: "Hapus gagal, silahkan coba lagi",
+                ),
+              );
+            });
+          },
         ),
         OutlinedButton(
           child: const Text("Batal"),
